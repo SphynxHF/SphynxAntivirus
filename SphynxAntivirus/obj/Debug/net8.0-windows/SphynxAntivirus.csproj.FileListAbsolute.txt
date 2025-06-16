@@ -1,0 +1,17 @@
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\bin\Debug\net8.0-windows\SphynxAntivirus.exe
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\bin\Debug\net8.0-windows\signatures.txt
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\bin\Debug\net8.0-windows\SphynxAntivirus.deps.json
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\bin\Debug\net8.0-windows\SphynxAntivirus.runtimeconfig.json
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\bin\Debug\net8.0-windows\SphynxAntivirus.dll
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\bin\Debug\net8.0-windows\SphynxAntivirus.pdb
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.Form1.resources
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.csproj.GenerateResource.cache
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.AssemblyInfoInputs.cache
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.AssemblyInfo.cs
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.csproj.CoreCompileInputs.cache
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.dll
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\refint\SphynxAntivirus.dll
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.pdb
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.genruntimeconfig.cache
+C:\Users\mikep\source\repos\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\ref\SphynxAntivirus.dll
