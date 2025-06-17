@@ -52,6 +52,7 @@
             menuExit_Click = new ToolStripMenuItem();
             btnViewLogs = new Button();
             btnClearLogs = new Button();
+            btnUpdateSigs = new Button();
             trayMenu.SuspendLayout();
             SuspendLayout();
             // 
@@ -241,11 +242,22 @@
             btnClearLogs.UseVisualStyleBackColor = true;
             btnClearLogs.Click += btnClearLogs_Click;
             // 
+            // btnUpdateSigs
+            // 
+            btnUpdateSigs.Location = new Point(368, 985);
+            btnUpdateSigs.Name = "btnUpdateSigs";
+            btnUpdateSigs.Size = new Size(242, 46);
+            btnUpdateSigs.TabIndex = 15;
+            btnUpdateSigs.Text = "Update Signatures";
+            btnUpdateSigs.UseVisualStyleBackColor = true;
+            btnUpdateSigs.Click += btnUpdateSigs_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1700, 1059);
+            Controls.Add(btnUpdateSigs);
             Controls.Add(btnClearLogs);
             Controls.Add(btnViewLogs);
             Controls.Add(lblRTPStatus);
@@ -292,5 +304,6 @@
         private ToolStripMenuItem menuExit_Click;
         private Button btnViewLogs;
         private Button btnClearLogs;
+        private Button btnUpdateSigs;
     }
 }

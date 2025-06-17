@@ -13,6 +13,8 @@ namespace SphynxAntivirus
         public Form1()
         {
             InitializeComponent();
+            SignatureUpdater.UpdateSignatures(); // silent fetch on launch
+            Logger.Log("UPDATED: Updated Virus Signatures");
             trayIcon.Visible = false;
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
         }
@@ -296,6 +298,15 @@ namespace SphynxAntivirus
         private void btnClearLogs_Click(object sender, EventArgs e)
         {
             Logger.ClearLogs();
+        }
+
+        private void btnUpdateSigs_Click(object sender, EventArgs e)
+        {
+            bool success = SignatureUpdater.UpdateSignatures();
+            if (success)
+                MessageBox.Show("Signatures updated successfully.");
+            else
+                MessageBox.Show("Failed to update signatures. Check log.");
         }
     }
 }
