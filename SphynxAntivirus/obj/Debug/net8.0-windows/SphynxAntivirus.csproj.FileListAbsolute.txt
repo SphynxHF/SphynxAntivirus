@@ -33,3 +33,4 @@ C:\Users\mikep\Documents\GitHub\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0
 C:\Users\mikep\Documents\GitHub\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.pdb
 C:\Users\mikep\Documents\GitHub\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\SphynxAntivirus.genruntimeconfig.cache
 C:\Users\mikep\Documents\GitHub\SphynxAntivirus\SphynxAntivirus\obj\Debug\net8.0-windows\ref\SphynxAntivirus.dll
+C:\Users\mikep\Documents\GitHub\SphynxAntivirus\SphynxAntivirus\bin\Debug\net8.0-windows\SphynxAntivirus.dll.config

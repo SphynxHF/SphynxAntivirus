@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace SphynxAntivirus
 {
@@ -9,15 +10,85 @@ namespace SphynxAntivirus
     {
         private FileSystemWatcher watcher;
         private bool isRTPActive = false;
+        private System.Timers.Timer updateTimer;
+
 
         public Form1()
         {
             InitializeComponent();
-            SignatureUpdater.UpdateSignatures(); // silent fetch on launch
+            AutoUpdateSignatures(); // First run
             Logger.Log("UPDATED: Updated Virus Signatures");
             trayIcon.Visible = false;
             trayIcon.MouseDoubleClick += trayIcon_MouseDoubleClick;
+            StartSignatureUpdateTimer(Properties.Settings.Default.AutoUpdateInterval);
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            RefreshSignatureVersionLabel();
+            LoadSettings();
+            if (Properties.Settings.Default.EnableRTP)
+            {
+                StartRealTimeProtection(textBoxFolder.Text);
+            }
+            else
+            {
+                StopRealTimeProtection();
+            }
+
+            if (Properties.Settings.Default.LaunchMinimized)
+            {
+                this.WindowState = FormWindowState.Minimized;
+                this.Hide();
+                trayIcon.Visible = true;
+            }
+
+
+        }
+        private void LoadSettings()
+        {
+            chkEnableRTP.Checked = Properties.Settings.Default.EnableRTP;
+            numUpdateInterval.Value = Properties.Settings.Default.AutoUpdateInterval;
+            chkBalloonAlerts.Checked = Properties.Settings.Default.ShowBalloonAlerts;
+            chkLaunchMinimized.Checked = Properties.Settings.Default.LaunchMinimized;
+            chkEnableLogging.Checked = Properties.Settings.Default.EnableLogging;
+        }
+
+
+        private void StartSignatureUpdateTimer(int intervalHours)
+        {
+            updateTimer = new System.Timers.Timer(intervalHours * 60 * 60 * 1000); // Convert hours to ms
+            updateTimer.Elapsed += (s, e) => AutoUpdateSignatures();
+            updateTimer.AutoReset = true;
+            updateTimer.Enabled = true;
+
+            Logger.Log($"Signature update timer started: every {intervalHours} hours.");
+        }
+
+        private void AutoUpdateSignatures()
+        {
+            bool success = SignatureUpdater.UpdateSignatures();
+
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)(() =>
+                {
+                    listBoxResults.Items.Add(success ? "[AutoUpdate] Signatures updated." : "[AutoUpdate] Update failed.");
+                }));
+            }
+            else
+            {
+                listBoxResults.Items.Add(success ? "[AutoUpdate] Signatures updated." : "[AutoUpdate] Update failed.");
+            }
+
+        }
+
+        private void RefreshSignatureVersionLabel()
+        {
+            string version = SignatureUpdater.GetSignatureVersion();
+            lblSignatureVersion.Text = $"Signature Version: {version}";
+        }
+
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -124,6 +195,9 @@ namespace SphynxAntivirus
 
         private void StartRealTimeProtection(string folderToWatch)
         {
+            if (Properties.Settings.Default.EnableRTP)
+                StartRealTimeProtection(textBoxFolder.Text);
+
             if (!Directory.Exists(folderToWatch))
             {
                 MessageBox.Show("Selected folder does not exist.");
@@ -145,6 +219,7 @@ namespace SphynxAntivirus
             btnToggleRTP.Text = "Stop Protection";
             isRTPActive = true;
         }
+
 
         private void StopRealTimeProtection()
         {
@@ -184,7 +259,8 @@ namespace SphynxAntivirus
                         trayIcon.BalloonTipTitle = "Threat Detected!";
                         trayIcon.BalloonTipText = $"{Path.GetFileName(e.FullPath)} has been quarantined.";
                         trayIcon.BalloonTipIcon = ToolTipIcon.Warning;
-                        trayIcon.ShowBalloonTip(2000);
+                        if (Properties.Settings.Default.ShowBalloonAlerts)
+                            trayIcon.ShowBalloonTip(2000);
                     }));
                 }
                 else
@@ -307,6 +383,40 @@ namespace SphynxAntivirus
                 MessageBox.Show("Signatures updated successfully.");
             else
                 MessageBox.Show("Failed to update signatures. Check log.");
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.EnableRTP = chkEnableRTP.Checked;
+            Properties.Settings.Default.AutoUpdateInterval = (int)numUpdateInterval.Value;
+            Properties.Settings.Default.ShowBalloonAlerts = chkBalloonAlerts.Checked;
+            Properties.Settings.Default.LaunchMinimized = chkLaunchMinimized.Checked;
+            Properties.Settings.Default.EnableLogging = chkEnableLogging.Checked;
+
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Settings saved successfully.");
+        }
+
+        private void btnResetDefaults_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Reset all settings to default values?", "Confirm Reset",
+    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                // Reset each setting manually to its default value
+                Properties.Settings.Default.EnableRTP = true;
+                Properties.Settings.Default.AutoUpdateInterval = 6;
+                Properties.Settings.Default.ShowBalloonAlerts = true;
+                Properties.Settings.Default.LaunchMinimized = false;
+                Properties.Settings.Default.EnableLogging = true;
+
+                // Save the reset settings
+                Properties.Settings.Default.Save();
+
+                // Refresh the form UI
+                LoadSettings();
+
+                MessageBox.Show("Settings have been reset to defaults.");
+            }
         }
     }
 }

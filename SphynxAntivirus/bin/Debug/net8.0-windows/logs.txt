@@ -1,2 +1,8 @@
-[2025-06-16 20:01:43] Signature update failed: The SSL connection could not be established, see inner exception.
-[2025-06-16 20:01:43] UPDATED: Updated Virus Signatures
+[2025-06-16 20:10:33] Signature update failed: An error occurred while sending the request.
+[2025-06-16 20:10:33] UPDATED: Updated Virus Signatures
+[2025-06-16 20:10:33] Signature update timer started: every 6 hours.
+[2025-06-16 20:13:17] Signature update skipped: No internet connection.
+[2025-06-16 20:17:16] Signature update failed: An error occurred while sending the request.
+[2025-06-16 20:17:16] UPDATED: Updated Virus Signatures
+[2025-06-16 20:17:16] Signature update timer started: every 6 hours.
+[2025-06-16 20:17:18] Signatures updated successfully.

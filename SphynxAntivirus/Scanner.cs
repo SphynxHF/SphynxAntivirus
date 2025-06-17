@@ -73,4 +73,20 @@ public static class Scanner
         }
     }
 
+    public static List<string> GetQuickScanPaths()
+    {
+        var paths = new List<string>
+    {
+        Environment.GetFolderPath(Environment.SpecialFolder.System),
+        Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+        Environment.GetFolderPath(Environment.SpecialFolder.Startup),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads")
+    };
+
+        return paths.Where(Directory.Exists).ToList();
+    }
+
+
 }

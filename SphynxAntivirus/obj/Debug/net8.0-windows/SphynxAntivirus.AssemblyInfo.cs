@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SphynxAntivirus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4c6478780431abbd1d07f7000143e8a75d86a3d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79f1e20e76b82f19f5f5aa667483c950e82702fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("SphynxAntivirus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SphynxAntivirus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
